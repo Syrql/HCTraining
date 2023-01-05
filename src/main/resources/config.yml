@@ -1,0 +1,14 @@
+no-permission: "&bTu ne peux pas executer cette commande!"
+not-player: "&bTu n'es pas un joueur."
+
+JOIN-MESSAGE:
+  - "&7&m------------------------------------"
+  - ""
+  - "       &fBienvenue sur le &bHCTraining&f!"
+  - "   &fTu veux apprendre le &bHCF&f, ou te battre"
+  - "          &fContre d'&bautres &féquipes?"
+  - "          &fAlors, tu es au bon endroit!"
+  - ""
+  - "                &7play.lazury.fr"
+  - ""
+  - "&7&m------------------------------------"

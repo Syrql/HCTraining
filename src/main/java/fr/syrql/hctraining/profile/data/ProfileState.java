@@ -1,4 +1,4 @@
-package fr.syrql.hctraining.profile;
+package fr.syrql.hctraining.profile.data;
 
 public enum ProfileState {
 

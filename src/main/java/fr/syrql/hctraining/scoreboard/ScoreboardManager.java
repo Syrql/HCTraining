@@ -1,5 +1,7 @@
-package scoreboard;
+package fr.syrql.hctraining.scoreboard;
 
+import fr.syrql.hctraining.scoreboard.adapter.ScoreAdapter;
+import fr.syrql.hctraining.scoreboard.thread.ScoreboardThread;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -7,8 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import scoreboard.adapter.ScoreAdapter;
-import scoreboard.thread.ScoreboardThread;
 
 import java.util.Collection;
 import java.util.HashMap;

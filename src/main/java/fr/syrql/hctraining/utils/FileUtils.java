@@ -1,4 +1,4 @@
-package fr.syrql.spigot.utils;
+package fr.syrql.hctraining.utils;
 
 import java.io.*;
 

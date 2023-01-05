@@ -1,4 +1,4 @@
-package fr.syrql.spigot.utils.item;
+package fr.syrql.hctraining.utils.item;
 
 import org.bukkit.Color;
 import org.bukkit.Material;

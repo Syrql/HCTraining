@@ -1,6 +1,6 @@
-package scoreboard.adapter;
+package fr.syrql.hctraining.scoreboard.adapter;
 
-import scoreboard.PlayerScoreboard;
+import fr.syrql.hctraining.scoreboard.PlayerScoreboard;
 
 public interface ScoreAdapter {
 

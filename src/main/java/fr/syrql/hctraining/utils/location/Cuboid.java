@@ -1,4 +1,4 @@
-package fr.syrql.zevents.utils.cube;
+package fr.syrql.hctraining.utils.location;
 
 import org.bukkit.Location;
 import org.bukkit.World;

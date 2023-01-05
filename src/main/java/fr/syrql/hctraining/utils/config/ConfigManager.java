@@ -1,6 +1,6 @@
-package fr.syrql.spigot.utils.config;
+package fr.syrql.hctraining.utils.config;
 
-import fr.syrql.spigot.Hades;
+import fr.syrql.hctraining.HCTraining;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -9,21 +9,21 @@ import java.util.List;
 
 public class ConfigManager {
 
-    private Hades hades;
+    private HCTraining hcTraining;
     private final FileConfiguration config;
 
-    public ConfigManager(Hades hades) {
-        this.hades = hades;
-        this.config = hades.getConfig();
+    public ConfigManager(HCTraining hcTraining) {
+        this.hcTraining = hcTraining;
+        this.config = hcTraining.getConfig();
     }
 
     public String getString(String path) {
-        return ChatColor.translateAlternateColorCodes('&', hades.getConfig().getString(path));
+        return ChatColor.translateAlternateColorCodes('&', hcTraining.getConfig().getString(path));
     }
 
     public List<String> getStringList(String path) {
 
-        List<String> stringList = hades.getConfig().getStringList(path);
+        List<String> stringList = hcTraining.getConfig().getStringList(path);
         ArrayList<String> toReturn = new ArrayList<>();
 
         stringList.forEach(line -> toReturn.add(ChatColor.translateAlternateColorCodes('&', line)));
@@ -56,7 +56,7 @@ public class ConfigManager {
     public FileConfiguration getConfig() { return config; }
 
     public void updateConfig() {
-        hades.saveConfig();
-        hades.reloadConfig();
+        hcTraining.saveConfig();
+        hcTraining.reloadConfig();
     }
 }

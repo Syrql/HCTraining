@@ -1,8 +1,9 @@
-package fr.syrql.spigot.utils;
+package fr.syrql.hctraining.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import fr.syrql.spigot.bots.nms.Bot;
+import fr.syrql.hctraining.arena.data.Arena;
+import fr.syrql.hctraining.profile.data.Profile;
 
 public class IOUtil {
 
@@ -21,12 +22,20 @@ public class IOUtil {
                 .create();
     }
 
-    public String serialize(Bot playerData) {
+    public String serialize(Arena playerData) {
         return this.gson.toJson(playerData);
     }
 
-    public Bot deserialize(String json) {
-        return this.gson.fromJson(json, Bot.class);
+    public Arena deserialize(String json) {
+        return this.gson.fromJson(json, Arena.class);
+    }
+
+    public String serializeProfile(Profile playerData) {
+        return this.gson.toJson(playerData);
+    }
+
+    public Profile deserializeProfile(String json) {
+        return this.gson.fromJson(json, Profile.class);
     }
 
 }

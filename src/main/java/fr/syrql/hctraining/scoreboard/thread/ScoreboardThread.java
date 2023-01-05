@@ -1,8 +1,8 @@
-package scoreboard.thread;
+package fr.syrql.hctraining.scoreboard.thread;
 
 
-import scoreboard.PlayerScoreboard;
-import scoreboard.ScoreboardManager;
+import fr.syrql.hctraining.scoreboard.PlayerScoreboard;
+import fr.syrql.hctraining.scoreboard.ScoreboardManager;
 
 public class ScoreboardThread extends Thread {
 

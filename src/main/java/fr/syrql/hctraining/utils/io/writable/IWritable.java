@@ -1,4 +1,4 @@
-package fr.syrql.logentry.data.io.writable;
+package fr.syrql.hctraining.utils.io.writable;
 
 public interface IWritable {
 

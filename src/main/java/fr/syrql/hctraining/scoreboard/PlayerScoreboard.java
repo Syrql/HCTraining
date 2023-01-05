@@ -1,5 +1,6 @@
-package scoreboard;
+package fr.syrql.hctraining.scoreboard;
 
+import fr.syrql.hctraining.scoreboard.adapter.ScoreAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -7,7 +8,6 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
-import scoreboard.adapter.ScoreAdapter;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

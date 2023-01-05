@@ -1,4 +1,4 @@
-package fr.syrql.logentry.data.io.provide;
+package fr.syrql.hctraining.utils.io.provide;
 
 public interface IProvider<K, V> {
 

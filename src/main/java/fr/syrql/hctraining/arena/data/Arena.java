@@ -1,18 +1,20 @@
-package fr.syrql.hctraining.arena;
+package fr.syrql.hctraining.arena.data;
 
 import java.util.UUID;
 
 public class Arena {
 
-    private UUID uuid;
+    private String id;
+    private String world;
     private int x1, z1;
     private int x2, z2;
     private ArenaType arenaType;
     private ArenaPoint playerLocationOne;
     private ArenaPoint playerLocationTwo;
 
-    public Arena(UUID uuid, int x1, int z1, int x2, int z2, ArenaType arenaType, ArenaPoint playerLocationOne, ArenaPoint playerLocationTwo) {
-        this.uuid = uuid;
+    public Arena(String id, String world, int x1, int z1, int x2, int z2, ArenaType arenaType, ArenaPoint playerLocationOne, ArenaPoint playerLocationTwo) {
+        this.id = id;
+        this.world = world;
         this.x1 = x1;
         this.z1 = z1;
         this.x2 = x2;
@@ -22,12 +24,20 @@ public class Arena {
         this.playerLocationTwo = playerLocationTwo;
     }
 
-    public UUID getUUID() {
-        return uuid;
+    public String getId() {
+        return id;
     }
 
-    public void setUUID(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getWorld() {
+        return world;
+    }
+
+    public void setWorld(String world) {
+        this.world = world;
     }
 
     public int getX1() {

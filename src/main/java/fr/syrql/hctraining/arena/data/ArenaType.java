@@ -1,4 +1,4 @@
-package fr.syrql.hctraining.arena;
+package fr.syrql.hctraining.arena.data;
 
 public enum ArenaType {
 

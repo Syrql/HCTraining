@@ -1,0 +1,7 @@
+name: HCTraining
+version: 0.0.1
+author: SYRQL
+main: fr.syrql.hctraining.HCTraining
+commands:
+  arena:
+  selector:
