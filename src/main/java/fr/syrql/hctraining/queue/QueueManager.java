@@ -1,47 +1,29 @@
 package fr.syrql.hctraining.queue;
 
 import fr.syrql.hctraining.HCTraining;
-import org.bukkit.entity.Player;
+import fr.syrql.hctraining.queue.io.IQueue;
+import fr.syrql.hctraining.queue.type.unranked.HCFQueueUnranked;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class QueueManager {
 
     private final HCTraining hcTraining;
-    private final LinkedList<Player> playersQueue;
+    private final List<IQueue> queues;
 
     public QueueManager(HCTraining hcTraining) {
         this.hcTraining = hcTraining;
-        this.playersQueue = new LinkedList<>();
+        this.queues = new ArrayList<>();
+        this.setupQueues();
     }
 
-    public void addToQueue(Player player)  {
-        this.playersQueue.addLast(player);
+    private void setupQueues() {
+        this.queues.add(new HCFQueueUnranked());
     }
 
-    public void removeFromQueue(Player player) {
-        this.playersQueue.remove(player);
-    }
-
-    public Player peekFirst() {
-
-        if (this.playersQueue.isEmpty()) return null;
-
-        Player player = this.playersQueue.get(0);
-        this.playersQueue.remove(player);
-        return player;
-    }
-
-    public Player peekSecond() {
-
-        if (this.playersQueue.isEmpty()) return null;
-
-        Player player = this.playersQueue.get(0);
-        this.playersQueue.remove(player);
-        return player;
-    }
-
-    public LinkedList<Player> getPlayersQueue() {
-        return playersQueue;
+    public List<IQueue> getQueues() {
+        return queues;
     }
 }

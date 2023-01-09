@@ -3,6 +3,8 @@ package fr.syrql.hctraining.scoreboard.example;
 import fr.syrql.hctraining.HCTraining;
 import fr.syrql.hctraining.profile.data.Profile;
 import fr.syrql.hctraining.profile.data.ProfileState;
+import fr.syrql.hctraining.queue.io.IQueue;
+import fr.syrql.hctraining.queue.type.unranked.HCFQueueUnranked;
 import fr.syrql.hctraining.scoreboard.PlayerScoreboard;
 import fr.syrql.hctraining.scoreboard.adapter.ScoreAdapter;
 import org.bukkit.Bukkit;
@@ -42,13 +44,19 @@ public class ExampleScoreAdapter implements ScoreAdapter {
         if (profile.getProfileState() == ProfileState.LOBBY) {
             scoreboard.addLine("§f• §bEn ligne: §f" + Bukkit.getOnlinePlayers().size());
             scoreboard.addLine("");
-            scoreboard.addLine("§f• §bEn Queue: §f" + hcTraining.getQueueManager().getPlayersQueue().size());
             scoreboard.addLine("§f• §bEn Match: §f0");
         }
 
         if (profile.getProfileState() == ProfileState.QUEUE) {
-            scoreboard.addLine("§f» §bNon-Classé");
-            scoreboard.addLine("§f• §bEn Queue: §f" + hcTraining.getQueueManager().getPlayersQueue().size());
+
+            IQueue iQueue = this.hcTraining.getQueueManager().getQueues().stream().filter(queue -> queue.getQueues().contains(player.getUniqueId())).findFirst().orElse(null);
+
+            if (iQueue == null) return;
+
+            if (iQueue instanceof HCFQueueUnranked) {
+                scoreboard.addLine("§f» §bNon-Classé");
+                scoreboard.addLine("§f• §bEn Queue: §f" + iQueue.getQueues().size());
+            }
         }
 
         if (profile.getProfileState() == ProfileState.MATCH) {

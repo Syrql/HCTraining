@@ -1,6 +1,7 @@
 package fr.syrql.hctraining.task;
 
 import fr.syrql.hctraining.HCTraining;
+import fr.syrql.hctraining.queue.io.IQueue;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -15,15 +16,13 @@ public class QueueTask implements Runnable {
     @Override
     public void run() {
 
-        if (this.hcTraining.getQueueManager().getPlayersQueue().size() < 2) return;
+        for (IQueue iQueue : this.hcTraining.getQueueManager().getQueues()) {
+            if (iQueue.getQueues().size() < 2) return;
+            Player playerOne = Bukkit.getPlayer(iQueue.peekFirstPlayer());
+            Player playerTwo = Bukkit.getPlayer(iQueue.peekSecondPlayer());
+            if (playerOne == null || playerTwo == null) return;
 
-        Player playerOne = this.hcTraining.getQueueManager().peekFirst();
-        Player playerTwo = this.hcTraining.getQueueManager().peekSecond();
-
-        Bukkit.broadcastMessage("§bRecherche d'adversaires en Unranked...");
-
-        if (playerOne == null || playerTwo == null) return;
-
-        this.hcTraining.getMatchManager().createMatch(playerOne, playerTwo);
+            this.hcTraining.getMatchManager().createMatch(playerOne, playerTwo);
+        }
     }
 }

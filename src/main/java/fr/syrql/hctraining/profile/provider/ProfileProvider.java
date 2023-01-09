@@ -24,7 +24,7 @@ public class ProfileProvider implements IProvider<UUID, Profile>, IWritable, IRe
     public ProfileProvider(HCTraining hcTraining) {
         this.hcTraining = hcTraining;
         this.profiles = new HashMap<>();
-        this.save = new File(this.hcTraining.getDataFolder(), "/profiles");
+        this.save = new File(this.hcTraining.getDataFolder(), "/profiles/");
     }
 
 

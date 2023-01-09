@@ -3,6 +3,9 @@ package fr.syrql.hctraining.listener;
 import fr.syrql.hctraining.HCTraining;
 import fr.syrql.hctraining.arena.data.Arena;
 import fr.syrql.hctraining.inventory.type.UnrankedInventory;
+import fr.syrql.hctraining.queue.QueueType;
+import fr.syrql.hctraining.queue.io.IQueue;
+import fr.syrql.hctraining.queue.type.unranked.HCFQueueUnranked;
 import fr.syrql.hctraining.utils.ArenaUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -61,16 +64,21 @@ public class UnrankedSelectListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         ItemStack itemStack = event.getCurrentItem();
-
+        if (!event.getInventory().getName().equalsIgnoreCase("§aNon-Classé")) return;
+        event.setCancelled(true);
         if (itemStack == null || itemStack.getType() == Material.AIR) return;
         if (itemStack.getType() != Material.BLAZE_ROD) return;
+        event.setCancelled(true);
+        player.closeInventory();
 
-        if (event.getInventory().getName().equalsIgnoreCase("§aNon-Classé")) {
-            event.setCancelled(true);
-            player.closeInventory();
+        IQueue iQueue = this.hcTraining.getQueueManager().getQueues().stream().filter(queue -> queue.getQueueType() == QueueType.UNRANKED).findFirst().orElse(null);
 
-            if (!this.hcTraining.getQueueManager().getPlayersQueue().contains(player)) {
-                this.hcTraining.getQueueManager().addToQueue(player);
+        if (iQueue instanceof HCFQueueUnranked) {
+
+            HCFQueueUnranked hcfQueueUnranked = (HCFQueueUnranked) iQueue;
+
+            if (!hcfQueueUnranked.getQueues().contains(player.getUniqueId())) {
+                hcfQueueUnranked.addPlayer(player);
                 player.sendMessage("§bTu as été ajouté à la file d'attente.");
                 this.hcTraining.getLobbyManager().giveWaitItems(player);
             }
@@ -90,7 +98,12 @@ public class UnrankedSelectListener implements Listener {
 
         if (itemStack.getItemMeta().getDisplayName().equalsIgnoreCase("§4✘ §cQuitter la file d'attente")) {
             event.setCancelled(true);
-            this.hcTraining.getQueueManager().removeFromQueue(player);
+
+            IQueue iQueue = this.hcTraining.getQueueManager().getQueues().stream().filter(queue -> queue.getQueues().contains(player.getUniqueId())).findFirst().orElse(null);
+
+            if (iQueue == null) return;
+
+            iQueue.removePlayer(player);
             player.sendMessage("§bTu as quitté la file d'attente.");
             this.hcTraining.getLobbyManager().giveLobbyItems(player);
         }

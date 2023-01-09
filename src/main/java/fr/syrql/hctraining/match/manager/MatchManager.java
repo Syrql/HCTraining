@@ -4,6 +4,8 @@ import fr.syrql.hctraining.HCTraining;
 import fr.syrql.hctraining.match.Match;
 import fr.syrql.hctraining.profile.data.Profile;
 import fr.syrql.hctraining.profile.data.ProfileState;
+import fr.syrql.hctraining.utils.item.ItemBuilder;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -50,6 +52,12 @@ public class MatchManager {
 
     private void setupPlayer(Player player, Player target, Match match) {
         Profile profile = this.hcTraining.getProfileProvider().get(player.getUniqueId());
+        player.getInventory().clear();
+
+        player.getInventory().setHelmet(null);
+        player.getInventory().setChestplate(null);
+        player.getInventory().setLeggings(null);
+        player.getInventory().setBoots(null);
 
         if (profile == null) return;
 
@@ -59,5 +67,6 @@ public class MatchManager {
         this.hcTraining.getServer().getScheduler().scheduleSyncDelayedTask(this.hcTraining, () -> player.showPlayer(target));
 
         profile.setCurrentMatch(match);
+        player.getInventory().setItem(0, new ItemBuilder(Material.WOOD_SWORD).setName("§4§lDESTRUCTION").toItemStack());
     }
 }
