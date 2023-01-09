@@ -5,3 +5,4 @@ main: fr.syrql.hctraining.HCTraining
 commands:
   arena:
   selector:
+  kit:

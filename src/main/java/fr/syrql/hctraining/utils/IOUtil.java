@@ -3,6 +3,7 @@ package fr.syrql.hctraining.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import fr.syrql.hctraining.arena.data.Arena;
+
 import fr.syrql.hctraining.profile.data.Profile;
 
 public class IOUtil {
@@ -37,6 +38,5 @@ public class IOUtil {
     public Profile deserializeProfile(String json) {
         return this.gson.fromJson(json, Profile.class);
     }
-
 }
 
